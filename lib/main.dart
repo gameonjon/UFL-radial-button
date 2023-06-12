@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+import 'package:vector_math/vector_math_geometry.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -62,7 +65,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent,
       builder: (BuildContext context) {
         return Container(
-          height: 150.0,
+          height: 350.0,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -70,51 +73,80 @@ class HomeScreen extends StatelessWidget {
               topRight: Radius.circular(16.0),
             ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Container(),
-              ),
-              CircularButton(
-                imagePath: "assets/sword.png",
-                label: 'Simple',
-                onPressed: () {
-                  _handleOptionSelected(context, player, 'Simple');
-                }
-              ),
-              CircularButton(
-                imagePath: "assets/swords.png",
-                label: 'Compound',
-                onPressed: () {
-                  _handleOptionSelected(context, player, 'Compound');
-                }
-              ),
-              CircularButton(
-                imagePath: "assets/rpg-game.png",
-                label: 'Parry/Riposte',
-                onPressed: () {
-                  _handleOptionSelected(context, player, 'Parry/Riposte');
-                }
-              ),
-              CircularButton(
-                imagePath: "assets/decision.png",
-                label: 'Remise',
-                onPressed: () {
-                  _handleOptionSelected(context, player, 'Remise');
-                }
-              ),
-              CircularButton(
-                imagePath: "assets/switch.png",
-                label: 'Counter',
-                onPressed: () {
-                  _handleOptionSelected(context, player, 'Counter');
-                }
-              ),
-              Expanded(
-                child: Container(),
-              ),
-            ],
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final centerX = constraints.maxWidth / 2;
+              final centerY = constraints.maxHeight/2;
+              
+              final buttonSize = 60.0;
+              final radius = 55.0;
+              /*
+              //for top and left at the end it should be:
+                radius - buttonSize / 2
+
+              */
+
+            
+              return Stack(
+                children: [
+                  Positioned(
+                    top: centerY + math.sin(0 * 1.256) * radius - buttonSize / 2,
+                    left: centerX + math.cos(0 * 1.256) * radius - buttonSize / 2,
+                    child: CircularButton(
+                      imagePath: "assets/sword.png",
+                      label: 'Simple',
+                      onPressed: () {
+                        _handleOptionSelected(context, player, 'Simple');
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: centerY + math.sin(1 * 1.256) * radius - buttonSize / 2,
+                    left: centerX + math.cos(1 * 1.256) * radius - buttonSize / 2,
+                    child: CircularButton(
+                      imagePath: "assets/swords.png",
+                      label: 'Compound',
+                      onPressed: () {
+                        _handleOptionSelected(context, player, 'Compound');
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: centerY + math.sin(2 * 1.256) * radius - buttonSize / 2,
+                    left: centerX + math.cos(2 * 1.256) * radius - buttonSize / 2,
+                    child: CircularButton(
+                      imagePath: "assets/rpg-game.png",
+                      label: 'Parry/Riposte',
+                      onPressed: () {
+                        _handleOptionSelected(context, player, 'Parry/Riposte');
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: centerY + math.sin(3 * 1.256) * radius - buttonSize / 2,
+                    left: centerX + math.cos(3 * 1.256) * radius - buttonSize / 2,
+                    child: CircularButton(
+                      imagePath: "assets/decision.png",
+                      label: 'Remise',
+                      onPressed: () {
+                        _handleOptionSelected(context, player, 'Remise');
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    top: centerY + math.sin(4 * 1.256) * radius - buttonSize / 2,
+                    left: centerX + math.cos(4 * 1.256) * radius - buttonSize / 2,
+                    child: CircularButton(
+                      imagePath: "assets/switch.png",
+                      label: 'Counter',
+                      onPressed: () {
+                        _handleOptionSelected(context, player, 'Counter');
+                      },
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         );
       },
@@ -176,9 +208,8 @@ class CircularButton extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
-      height: 80.0,
-      width: 80.0,
-      margin: EdgeInsets.all(16.0),
+      height: 60.0,
+      width: 60.0,
       child: FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: Colors.blue,
@@ -187,20 +218,19 @@ class CircularButton extends StatelessWidget{
           children: [
             Image.asset(
               imagePath,
-              width: 32.0,
-              height: 32.0,
+              width: 22.0,
+              height: 22.0,
               color: Colors.white,
             ),
-            SizedBox(height: 8.0,),
+            SizedBox(height: 2.0,),
             Text(
               label,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 12.0
+                fontSize: 8.0
               ),
             ),
-
           ],
         ),
       ),
