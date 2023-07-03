@@ -27,24 +27,33 @@ class HomeScreen extends StatelessWidget {
   void _showMenu(BuildContext context, String player) {
     showModalBottomSheet(
       context: context,
-      backgroundColor: Colors.transparent,
+      
+      backgroundColor: Colors.transparent, 
       builder: (BuildContext context) {
         return Container(
-          height: 350.0,
+
+          // height: 350.0,
+          // alignment: Alignment.topCenter,
+
+          // maxHeight: MediaQuery.of(context).size.height,
+          
+          height: MediaQuery.of(context).size.height,
+          // width: 100.0,
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16.0),
-              topRight: Radius.circular(16.0),
-            ),
+            color: Colors.transparent,
+            shape: BoxShape.circle,
+            // borderRadius: BorderRadius.only(
+            //   topLeft: Radius.circular(16.0),
+            //   topRight: Radius.circular(16.0),
+
+            // ),
           ),
           child: LayoutBuilder(
             builder: (context, constraints) {
               final centerX = constraints.maxWidth / 2;
               final centerY = constraints.maxHeight/2;
-              
-              final buttonSize = 60.0;
-              final radius = 55.0;
+              final buttonSize = 50.0;
+              final radius = 50.0;
               //for top and left at the end it should be:
                 //radius - buttonSize / 2
 
@@ -150,7 +159,9 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: top,
               left: left-14.0,
-              child: FloatingActionButton.small(
+              height: 35.0,
+              width: 35.0,
+              child: FloatingActionButton(
                 onPressed: () {
                   _handleOptionSelected(context, player, option, 'Hit');
                 },
@@ -173,7 +184,9 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: top,
               left: left + 28.0,
-              child: FloatingActionButton.small(
+              height: 35.0,
+              width: 35.0,
+              child: FloatingActionButton(
                 onPressed: () {
                   _handleOptionSelected(context, player, option, 'Miss');
                 },
@@ -294,8 +307,8 @@ class CircularButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.0,
-      width: 60.0,
+      height: 55.0,
+      width: 55.0,
       child: FloatingActionButton(
         onPressed: onPressed,
         backgroundColor: Colors.blue,
@@ -304,8 +317,8 @@ class CircularButton extends StatelessWidget {
           children: [
             Image.asset(
               imagePath,
-              width: 22.0,
-              height: 22.0,
+              width: 20.0,
+              height: 20.0,
               color: Colors.white,
             ),
             SizedBox(height: 2.0),
@@ -314,7 +327,7 @@ class CircularButton extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 8.0,
+                fontSize: 7.0,
               ),
             ),
           ],
