@@ -31,23 +31,13 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.transparent, 
       builder: (BuildContext context) {
         return Container(
-
-          // height: 350.0,
-          // alignment: Alignment.topCenter,
-
-          // maxHeight: MediaQuery.of(context).size.height,
-          
           height: MediaQuery.of(context).size.height,
-          // width: 100.0,
+          
           decoration: BoxDecoration(
             color: Colors.transparent,
             shape: BoxShape.circle,
-            // borderRadius: BorderRadius.only(
-            //   topLeft: Radius.circular(16.0),
-            //   topRight: Radius.circular(16.0),
-
-            // ),
           ),
+
           child: LayoutBuilder(
             builder: (context, constraints) {
               final centerX = constraints.maxWidth / 2;
@@ -336,79 +326,6 @@ class CircularButton extends StatelessWidget {
     );
   }
 }
-
-
-// class CircularButton extends StatefulWidget {
-//   final String imagePath;
-//   final String label;
-//   final VoidCallback onPressed;
-
-//   const CircularButton({
-//     Key? key,
-//     required this.imagePath,
-//     required this.label,
-//     required this.onPressed,
-//   }) : super(key: key);
-
-//   @override
-//   _CircularButtonState createState() => _CircularButtonState();
-// }
-
-// class _CircularButtonState extends State<CircularButton> {
-//   bool _isHolding = false;
-
-  
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTapDown: (_) {
-//         setState(() {
-//           _isHolding = true;
-//         });
-//       },
-//       onTapUp: (_) {
-//         setState(() {
-//           _isHolding = false;
-//         });
-//         _showThirdMenu(context);
-//       },
-//       onTapCancel: () {
-//         setState(() {
-//           _isHolding = false;
-//         });
-//       },
-//       child: Container(
-//         height: 60.0,
-//         width: 60.0,
-//         child: FloatingActionButton(
-//           onPressed: () {},
-//           backgroundColor: _isHolding ? Colors.green : Colors.blue,
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               Image.asset(
-//                 widget.imagePath,
-//                 width: 22.0,
-//                 height: 22.0,
-//                 color: Colors.white,
-//               ),
-//               SizedBox(height: 2.0),
-//               Text(
-//                 widget.label,
-//                 textAlign: TextAlign.center,
-//                 style: TextStyle(
-//                   color: Colors.white,
-//                   fontSize: 8.0,
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 
 // Replace this widget with your own video player widget that plays the recording
